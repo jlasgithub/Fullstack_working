@@ -1,11 +1,12 @@
 ---
- - hosts: node1
+ - hosts: webservers
    become: yes
    tasks:
-    - name: Task - 1 Update APT package manager repositories cache
-      become: true
-      apt:
-        update_cache: yes
+    - name: Install Java
+      become: yes
+        apt:
+          name: openjdk-11-jdk
+          state: present
     - name: install apache2
         apt:
           name: apache2
