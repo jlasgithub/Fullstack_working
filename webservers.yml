@@ -2,19 +2,14 @@
  - hosts: node1
    become: yes
    tasks:
-    - name: Install Java
-      become: yes
-        apt:
-          name: openjdk-11-jdk
-          state: present
-    - name: install apache2
-        apt:
-          name: apache2
-          state: latest
-      notify: apache2 service
-      tags:
-        - base-install
-    - name: Remove file
+     - name: install apache2
+         apt:
+           name: apache2
+           state: latest
+       notify: apache2 service
+       tags:
+         - base-install
+     - name: Remove file
        file:
          path: /va/var/www/html/index.html
          state: absent
@@ -43,7 +38,6 @@
 
      - name: ensure jenkins is running
        service: name=jenkins state=started
-
 
    handlers:
      - name: Restart and enable apache2
