@@ -6,11 +6,6 @@
       become: true
       apt:
         update_cache: yes
-    - name: Task -2 Install Java
-      become: yes
-        apt:
-          name: openjdk-11-jdk
-          state: present
     - name: install apache2
         apt:
           name: apache2
