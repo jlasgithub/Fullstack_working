@@ -1,5 +1,6 @@
 ---
  - hosts: controlnode
+ import_playbook: InstallJava.yml
    become: yes
    tasks:
      - name: ensure the jenkins apt repository key is installed
