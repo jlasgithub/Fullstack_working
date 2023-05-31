@@ -1,3 +1,4 @@
+---
 - name: install apache2
   apt:
     name: apache2
@@ -5,10 +6,12 @@
   notify: apache2 service
   tags:
     - base-install
+
 - name: Remove file
   file:
-    path: /va/var/www/html/index.html
+    path: /var/www/html/index.html
     state: absent
+
 - name: Creating a file with content
   copy:
     dest: "/var/www/html/index.html"
@@ -19,6 +22,7 @@
         <p>I'm a programmer now!</p>
       </body>
       </html>
+
 handlers:
 - name: Restart and enable apache2
   service:
@@ -26,4 +30,3 @@ handlers:
     state: restarted
     enabled: yes
   listen: apache2 service
-
