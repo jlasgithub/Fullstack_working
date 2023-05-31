@@ -1,18 +1,39 @@
 ---
- - hosts: webservers
-   become: yes
-   tasks:
-     - name: ensure the jenkins apt repository key is installed
-       apt_key: url=https://pkg.jenkins.io/debian-stable/jenkins.io.key state=present
-       become: yes
+- name: Install Jenkins
+  hosts: webservers
+  become: true
+  tasks:
+    - name: Add Jenkins apt repository key
+      apt_key:
+        url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+        state: present
 
-     - name: ensure the repository is configured
-       apt_repository: repo='deb https://pkg.jenkins.io/debian-stable binary/' state=present
-       become: yes
+    - name: Add Jenkins apt repository
+      apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/"
+        state: present
 
-     - name: ensure jenkins is installed
-       apt: name=jenkins update_cache=yes
-       become: yes
+    - name: Update apt cache
+      apt:
+        update_cache: yes
 
-     - name: ensure jenkins is running
-       service: name=jenkins state=started
+    - name: Install Java Runtime Environment
+      apt:
+        name: openjdk-11-jre
+        state: present
+
+    - name: Install Jenkins package
+      apt:
+        name: jenkins
+        state: present
+
+    - name: Install additional packages
+      apt:
+        name: fontconfig
+        state: present
+
+    - name: Start Jenkins service
+      service:
+        name: jenkins
+        state: started
+        enabled: yes
