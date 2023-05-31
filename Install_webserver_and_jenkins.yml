@@ -2,8 +2,8 @@
 - hosts: webservers
   tasks:
     - name: Include InstallJava playbook
-      include: InstallJava.yml
-    - name: Include InstallJenkins playbook
-      include: InstallJenkins.yml
+      include: Install_Java_i.yml
+    - name: Include Install_Jenkins_i playbook
+      include: Install_Jenkins_i.yml
     - name: Include webservers playbook
-      include: webservers.yml
+      include: Install_Webservers_i.yml
