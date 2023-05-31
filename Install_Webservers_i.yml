@@ -2,6 +2,7 @@
   apt:
     name: apache2
     state: latest
+  notify: apache2 service
   tags:
     - base-install
 - name: Remove file
@@ -18,5 +19,11 @@
         <p>I'm a programmer now!</p>
       </body>
       </html>
-
+handlers:
+  - name: Restart and enable apache2
+    service:
+      name: apache2
+      state: restarted
+      enabled: yes
+    listen: apache2 service
 
