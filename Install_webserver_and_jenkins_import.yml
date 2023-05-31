@@ -1,10 +1,11 @@
----
 - hosts: webservers
   become: yes
   tasks:
-    - name: Include InstallJava playbook
+    - name: Include InstallJava tasks
       import_tasks: Install_Java_i.yml
-    - name: Include Install_Jenkins_i playbook
+
+    - name: Include InstallJenkins tasks
       import_tasks: Install_Jenkins_i.yml
-    - name: Include webservers playbook
+
+    - name: Include webservers tasks
       import_tasks: Install_Webservers_i.yml
