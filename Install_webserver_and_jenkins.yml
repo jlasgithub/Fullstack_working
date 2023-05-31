@@ -1,9 +1,9 @@
 ---
 - hosts: All
   tasks:
-  - name: Install Java
-    import_playbook: InstallJava.yaml
-  - name: Install Jenkins
-    import_playbook: InstallJenkins.yaml
-  - name: Install Apache
-    import_playbook: webservers.yaml
+    - name: Install Java
+      import_playbook: InstallJava.yaml
+    - name: Install Jenkins
+      import_playbook: InstallJenkins.yaml
+    - name: Install Apache
+      import_playbook: webservers.yaml
