@@ -6,6 +6,13 @@ sudo apt install ansible
 sudo apt upgrade ansible
 ```
 
+updte the inventory file to include your servers ip address
+
+```
+[webservers]
+node1 ansible_host=<add your ubuntu IP address>
+```
+
 Ping Nodes to add ssh key
 
 ```
