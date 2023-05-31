@@ -1,5 +1,5 @@
 ---
-- hosts: All
+- hosts: webservers
   tasks:
     - name: Include InstallJava playbook
       include: InstallJava.yaml
