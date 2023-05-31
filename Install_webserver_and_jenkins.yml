@@ -1,9 +1,6 @@
 ---
 - hosts: All
   tasks:
-    - name: Debug message
-      debug:
-        msg: "play1"
     - name: Install Java
       import_playbook: InstallJava.yaml
     - name: Install Jenkins
