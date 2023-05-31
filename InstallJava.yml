@@ -1,5 +1,5 @@
 ---
- - hosts: webservers, controlnode
+ - hosts: webservers
    become: yes
    tasks:
      - name: Task - 1 Update APT package manager repositories cache
