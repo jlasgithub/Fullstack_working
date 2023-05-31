@@ -3,8 +3,8 @@
   become: yes
   tasks:
     - name: Include InstallJava playbook
-      import_playbook: Install_Java_i.yml
+      import_tasks: Install_Java_i.yml
     - name: Include Install_Jenkins_i playbook
-      import_playbook: Install_Jenkins_i.yml
+      import_tasks: Install_Jenkins_i.yml
     - name: Include webservers playbook
-      import_playbook: Install_Webservers_i.yml
+      import_tasks: Install_Webservers_i.yml
