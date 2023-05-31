@@ -16,4 +16,6 @@ ansible-playbook webservers.yml -i inventory
 ansible-playbook InstallJava.yml -i inventory
 ansible-playbook InstallJenkins.yml -i inventory
 
+Use the following command to get the initial password of the new jenkins install
+
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
