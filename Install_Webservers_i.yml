@@ -2,7 +2,6 @@
   apt:
     name: apache2
     state: latest
-  notify: apache2 service
   tags:
     - base-install
 - name: Remove file
