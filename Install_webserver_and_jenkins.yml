@@ -1,12 +1,12 @@
 ---
-  - hosts: All
-    tasks:
-      - debug:
-          msg: play1
-
-  - name: Install Java
-    import_playbook: InsallJava.yaml
-  - name Install Jenkins
-    import_playbook: InsallJenkins.yaml
-  - name Install Aoache
-    import_playbook: webservers.yaml
+- hosts: All
+  tasks:
+    - name: Debug message
+      debug:
+        msg: "play1"
+    - name: Install Java
+      import_playbook: InstallJava.yaml
+    - name: Install Jenkins
+      import_playbook: InstallJenkins.yaml
+    - name: Install Apache
+      import_playbook: webservers.yaml
