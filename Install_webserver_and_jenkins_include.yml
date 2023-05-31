@@ -1,5 +1,6 @@
 ---
 - hosts: webservers
+  become: true
   tasks:
     - name: Include InstallJava playbook
       include: Install_Java_i.yml
