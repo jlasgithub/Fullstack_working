@@ -8,3 +8,10 @@
       include: Install_Jenkins_i.yml
     - name: Include webservers playbook
       include: Install_Webservers_i.yml
+  handlers:
+    - name: Restart and enable apache2
+      service:
+        name: apache2
+        state: restarted
+        enabled: yes
+      listen: apache2 service
