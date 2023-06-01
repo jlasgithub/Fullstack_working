@@ -1,0 +1,33 @@
+---
+- name: Install MySQL on Ubuntu
+  hosts: your_ubuntu_server
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install MySQL server and client packages
+      apt:
+        name:
+          - mysql-server
+          - mysql-client
+        state: present
+
+    - name: Configure MySQL server
+      template:
+        src: mysql.cnf.j2
+        dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+      notify: Restart MySQL
+
+    - name: Start MySQL service
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+
+  handlers:
+    - name: Restart MySQL
+      service:
+        name: mysql
+        state: restarted
