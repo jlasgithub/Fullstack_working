@@ -3,15 +3,20 @@
 bind-address = 13.57.209.229
 port = 3306
 max_connections = 100
-# Add more configuration options as needed
+
+# Logging
+log-error = /var/log/mysql/error.log
+
+# Character Set
+character-set-server = utf8mb4
+collation-server = utf8mb4_general_ci
 
 # Custom settings
-# custom_setting = value
+# Add any additional custom settings here
 
 [mysql]
 # MySQL client configuration options
-# client_setting = value
 
 [mysqldump]
 # MySQL dump configuration options
-# dump_setting = value
+
