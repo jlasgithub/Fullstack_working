@@ -1,6 +1,6 @@
 ---
 - name: Install MySQL on Ubuntu
-  hosts: your_ubuntu_server
+  hosts: webservers
   become: yes
   tasks:
     - name: Update apt cache
