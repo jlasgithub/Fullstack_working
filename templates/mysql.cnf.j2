@@ -1,5 +1,17 @@
-- name: Configure MySQL server
-  template:
-    src: templates/mysql.cnf.j2
-    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
-  notify: Restart MySQL
+[mysqld]
+# MySQL server configuration options
+bind-address = 13.57.209.229
+port = 3306
+max_connections = 100
+# Add more configuration options as needed
+
+# Custom settings
+# custom_setting = value
+
+[mysql]
+# MySQL client configuration options
+# client_setting = value
+
+[mysqldump]
+# MySQL dump configuration options
+# dump_setting = value
