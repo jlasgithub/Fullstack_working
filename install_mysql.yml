@@ -7,7 +7,7 @@
       - mysql-server
       - mysql-client
   tasks:
-    - name: install python, pip etc
+    - name: install python, pip, etc.
       shell: apt-get -y install "{{ item }}"
       with_items:
         - pip 
@@ -33,7 +33,7 @@
     - name: update mysql root password for all root accounts
       mysql_user:
         name: root
-        host: 54.67.111.43
+        host: "{{ inventory_hostname }}"
         password: "{{ new_mysql_root_password }}"
 
     - name: delete anonymous MySQL server user for localhost
@@ -42,7 +42,7 @@
     - name: remove the MySQL test database
       action: mysql_db db=test state=absent
 
-    - name: Remove   /root/.my.cnf
+    - name: Remove /root/.my.cnf
       ansible.builtin.file:
         path: /root/.my.cnf
         state: absent
