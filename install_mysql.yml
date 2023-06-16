@@ -71,7 +71,13 @@
         login_password: "{{ new_mysql_root_password }}"
         login_unix_socket: /var/run/mysqld/mysqld.sock
 
-    - name: Remove /root/.my.cnf
-      file:
-        path: /root/.my.cnf
-        state: absent
+    - name: Create MySQL user dbuser
+      mysql_user:
+        name: dbuser
+        host: "{{ ansible_user }}"
+        password: "{{ new_mysql_root_password }}"
+        priv: "*.*:ALL"
+        state: present
+        login_user: root
+        login_password: "{{ new_mysql_root_password }}"
+        login_unix_socket: /var/run/mysqld/mys
