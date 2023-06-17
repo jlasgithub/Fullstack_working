@@ -81,7 +81,7 @@
     - name: Create MySQL user dbuser
       mysql_user:
         name: ubuntu
-        host: "{{ inventory_hostname }}"
+        host: localhost
         password: "{{ new_mysql_root_password }}"
         priv: "*.*:ALL"
         state: present
@@ -92,7 +92,7 @@
     - name: Grant privileges to MySQL user dbuser
       mysql_user:
         name: ubuntu
-        host: "{{ inventory_hostname }}"
+        host: localhost
         password: "{{ new_mysql_root_password }}"
         priv: "*.*:ALL"
         state: present
