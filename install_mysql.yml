@@ -78,7 +78,7 @@
         login_password: "{{ new_mysql_root_password }}"
         login_unix_socket: /var/run/mysqld/mysqld.sock
 
-    - name: Create MySQL user ubuntu
+    - name: Create MySQL user dbuser
       mysql_user:
         name: ubuntu
         host: "{{ inventory_hostname }}"
@@ -88,3 +88,15 @@
         login_user: root
         login_password: "{{ new_mysql_root_password }}"
         login_unix_socket: /var/run/mysqld/mysqld.sock
+    
+    - name: Grant privileges to MySQL user dbuser
+      mysql_user:
+        name: ubuntu
+        host: "{{ inventory_hostname }}"
+        password: "{{ new_mysql_root_password }}"
+        priv: "*.*:ALL"
+        state: present
+        login_user: root
+        login_password: "{{ new_mysql_root_password }}"
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+
