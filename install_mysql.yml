@@ -78,7 +78,7 @@
         login_password: "{{ new_mysql_root_password }}"
         login_unix_socket: /var/run/mysqld/mysqld.sock
 
-    - name: Create MySQL user dbuser
+    - name: Create MySQL user ubuntu
       mysql_user:
         name: ubuntu
         host: "{{ inventory_hostname }}"
