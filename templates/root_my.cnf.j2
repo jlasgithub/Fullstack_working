@@ -5,3 +5,6 @@ password={{ new_mysql_root_password }}
 
 [mysql]
 prompt="\u@\h [\d]> "
+
+[mysqld]
+bind-address = "{{ ansible_host }}"
