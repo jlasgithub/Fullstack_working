@@ -4,10 +4,10 @@
   tasks:
     - name: Include InstallJava playbook
       include: Install_Java_i.yml
-    - name: Include Install_Jenkins_i playbook
-      include: Install_Jenkins_i.yml
     - name: Include webservers playbook
       include: Install_Webservers_i.yml
+    - name: Include Install_Jenkins_i playbook
+      include: Install_Jenkins_i.yml
   handlers:
     - name: Restart and enable apache2
       service:
