@@ -1,8 +1,8 @@
 ---
 - name: Add Jenkins apt repository key
   apt_key:
-    url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
-    state: present
+    url: https://pkg.jenkins.io/debian/jenkins.io.key
+    state: present  # Change 'binary' to 'jenkins' in the URL
 
 - name: Add Jenkins apt repository
   apt_repository:
