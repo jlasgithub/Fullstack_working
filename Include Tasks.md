@@ -71,12 +71,12 @@ Create separate task playbooks for each resource you want to install.
 ---
 - name: Add Jenkins apt repository key
   apt_key:
-    url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io.key  # Use the correct URL
     state: present
 
 - name: Add Jenkins apt repository
   apt_repository:
-    repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/"
+    repo: "deb https://pkg.jenkins.io/debian-stable binary/"
     state: present
 
 - name: Update apt cache
@@ -103,6 +103,7 @@ Create separate task playbooks for each resource you want to install.
     name: jenkins
     state: started
     enabled: yes
+
 ```
 
 **Install_Webservers_i.yml:**
