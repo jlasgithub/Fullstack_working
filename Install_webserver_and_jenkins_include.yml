@@ -1,13 +1,13 @@
 ---
 - hosts: webservers
-  become: true
+  become: yes
   tasks:
-    - name: Include InstallJava playbook
-      include: Install_Java_i.yml
-    - name: Include webservers playbook
-      include: Install_Webservers_i.yml
-    - name: Include Install_Jenkins_i playbook
-      include: Install_Jenkins_i.yml
+    - name: Include InstallJava tasks
+      import_tasks: roles/common/tasks/Install_Java_i.yml
+
+    - name: Include webservers tasks
+      import_tasks: roles/common/tasks/Install_Webservers_i.yml
+
   handlers:
     - name: Restart and enable apache2
       service:
@@ -15,3 +15,9 @@
         state: restarted
         enabled: yes
       listen: apache2 service
+
+- hosts: localhost  # This is the control node
+  gather_facts: no  # You may skip gathering facts for the control node
+  tasks:
+    - name: Install Jenkins
+      include_tasks: Install_Jenkins_i.yml
