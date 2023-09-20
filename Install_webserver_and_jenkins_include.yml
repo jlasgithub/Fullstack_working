@@ -3,10 +3,10 @@
   become: yes
   tasks:
     - name: Include InstallJava tasks
-      import_tasks: roles/common/tasks/Install_Java_i.yml
+      import_tasks: Install_Java_i.yml
 
     - name: Include webservers tasks
-      import_tasks: roles/common/tasks/Install_Webservers_i.yml
+      import_tasks: Install_Webservers_i.yml
 
   handlers:
     - name: Restart and enable apache2
