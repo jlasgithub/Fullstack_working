@@ -27,9 +27,6 @@ Create the main playbook (webservers.yml) with the following content:
     - name: Include InstallJava tasks
       import_tasks: roles/common/tasks/Install_Java_i.yml
 
-    - name: Include InstallJenkins tasks
-      import_tasks: roles/common/tasks/Install_Jenkins_i.yml
-
     - name: Include webservers tasks
       import_tasks: roles/common/tasks/Install_Webservers_i.yml
 
@@ -40,6 +37,12 @@ Create the main playbook (webservers.yml) with the following content:
         state: restarted
         enabled: yes
       listen: apache2 service
+
+- hosts: localhost  # This is the control node
+  gather_facts: no  # You may skip gathering facts for the control node
+  tasks:
+    - name: Install Jenkins
+      include_tasks: Install_Jenkins_i.yml
 ```
 
 **Step 3: Create Task Playbooks (Install_Java_i.yml, Install_Jenkins_i.yml, Install_Webservers_i.yml)**
