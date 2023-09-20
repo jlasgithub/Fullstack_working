@@ -1,12 +1,12 @@
 ---
 - name: Add Jenkins apt repository key
   apt_key:
-    url: https://pkg.jenkins.io/debian/jenkins.io.key
-    state: present  # Change 'binary' to 'jenkins' in the URL
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io.key  # Use the correct URL
+    state: present
 
 - name: Add Jenkins apt repository
   apt_repository:
-    repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/"
+    repo: "deb https://pkg.jenkins.io/debian-stable binary/"
     state: present
 
 - name: Update apt cache
