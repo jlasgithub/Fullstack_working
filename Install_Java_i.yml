@@ -10,3 +10,14 @@
   vars:
     packages:
         - openjdk-11-jdk
+
+- name: Install Java Runtime Environment
+  become: yes
+  apt:
+    state: present
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+        - openjdk-11-jre
+    
