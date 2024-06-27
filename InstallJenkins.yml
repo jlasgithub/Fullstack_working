@@ -3,15 +3,15 @@
   hosts: controlnode
   become: true
   tasks:
-    - name: Add Jenkins apt repository key
-      command: wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add -
-      register: add_key_result
-      ignore_errors: yes
+    - name: Download Jenkins apt repository key
+      get_url:
+        url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+        dest: /tmp/jenkins.io.key
 
-    - name: Ensure Jenkins apt repository key was added
-      fail:
-        msg: "Failed to add Jenkins apt repository key"
-      when: add_key_result.rc != 0
+    - name: Add Jenkins apt repository key
+      apt_key:
+        file: /tmp/jenkins.io.key
+        state: present
 
     - name: Add Jenkins apt repository
       apt_repository:
