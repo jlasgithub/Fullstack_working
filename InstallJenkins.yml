@@ -1,6 +1,6 @@
 ---
 - name: Install Jenkins
-  hosts: controlnodes
+  hosts: controlnode
   become: true
   pre_tasks:
     - name: Wait for unattended-upgrades process to finish
