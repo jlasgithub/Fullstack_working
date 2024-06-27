@@ -5,7 +5,7 @@
   tasks:
     - name: Download Jenkins apt repository key
       get_url:
-        url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+        url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
         dest: /tmp/jenkins.io.key
 
     - name: Add Jenkins apt repository key
