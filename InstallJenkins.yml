@@ -2,17 +2,19 @@
 - name: Install Jenkins
   hosts: controlnode
   become: true
+
   pre_tasks:
-    - name: Wait for unattended-upgrades process to finish
+    - name: Disable unattended-upgrades service
+      systemd:
+        name: unattended-upgrades
+        enabled: no
+        state: stopped
+      ignore_errors: yes
+
+    - name: Kill any running unattended-upgrades processes
       shell: |
-        while pgrep -x "unattended-upgr" >/dev/null 2>&1; do
-          echo "Waiting for unattended-upgrades to finish..."
-          sleep 10
-        done
-      retries: 30
-      delay: 10
-      until: result.rc == 0
-      register: result
+        pgrep -f unattended-upgrades | xargs -r kill -9
+      ignore_errors: yes
 
     - name: Ensure no apt or dpkg processes are running
       shell: |
@@ -25,6 +27,7 @@
       until: result.rc == 0
       register: result
 
+  tasks:
     - name: Install prerequisites
       apt:
         name: gnupg
@@ -35,7 +38,6 @@
       until: result is success
       register: result
 
-  tasks:
     - name: Add Jenkins apt repository key using apt-key adv
       command: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5BA31D57EF5975CA
       register: add_key_result
