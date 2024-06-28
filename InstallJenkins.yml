@@ -15,6 +15,11 @@
       shell: |
         pgrep -f unattended-upgrades | xargs -r kill -9
       ignore_errors: yes
+      register: kill_result
+
+    - name: Debug kill_result
+      debug:
+        var: kill_result
 
     - name: Ensure no apt or dpkg processes are running
       shell: |
