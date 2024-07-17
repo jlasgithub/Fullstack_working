@@ -9,7 +9,10 @@ sudo apt update && sudo apt upgrade
 sudo apt install ansible
 sudo apt upgrade ansible
 ```
-
+clone the Ansible-Intro GitHub repo
+```
+git clone https://github.com/ProDataMan/Ansible-Intro.git
+```
 updte the inventory file to include your servers ip address
 
 ```
