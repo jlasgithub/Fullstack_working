@@ -1,6 +1,6 @@
 AWS Public AMI (N. California) to use for doing Ansible labs on Ubuntu
 ```
-ami-07013dd48140efd73
+ami-0603cb4546aa25a8b
 ```
 Install Ansible
 
@@ -9,7 +9,10 @@ sudo apt update && sudo apt upgrade
 sudo apt install ansible
 sudo apt upgrade ansible
 ```
-
+clone the Ansible-Intro GitHub repo
+```
+git clone https://github.com/ProDataMan/Ansible-Intro.git
+```
 updte the inventory file to include your servers ip address
 
 ```
