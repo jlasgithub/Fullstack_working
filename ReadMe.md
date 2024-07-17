@@ -1,6 +1,6 @@
 AWS Public AMI (N. California) to use for doing Ansible labs on Ubuntu
 ```
-ami-07013dd48140efd73
+ami-0603cb4546aa25a8b
 ```
 Install Ansible
 
